@@ -1,0 +1,276 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Mr Massage | Mobile Relaxing Massage in the Fylde</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;600;700&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --sage: #5a6b4f;
+      --sage-dark: #3d4a35;
+      --gold: #c9a227;
+      --cream: #f8f4ef;
+      --warm-white: #fdfcfb;
+      --text: #2c2c2c;
+      --soft: #6b6b6b;
+    }
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    body {
+      font-family: 'Inter', sans-serif;
+      color: var(--text);
+      background: var(--warm-white);
+      line-height: 1.7;
+    }
+    h1, h2, h3 { font-family: 'Playfair Display', serif; font-weight: 600; }
+    a { text-decoration: none; color: inherit; }
+    img { max-width: 100%; height: auto; display: block; }
+
+    /* Nav */
+    nav {
+      position: fixed; top: 0; width: 100%; background: rgba(253,252,251,0.95);
+      backdrop-filter: blur(10px); z-index: 100; padding: 1rem 0;
+      border-bottom: 1px solid rgba(0,0,0,0.05);
+    }
+    .nav-inner {
+      max-width: 1200px; margin: 0 auto; display: flex; justify-content: space-between; align-items: center;
+      padding: 0 2rem;
+    }
+    .logo { display: flex; align-items: center; gap: 0.75rem; }
+    .logo img { height: 48px; width: auto; }
+    .logo-text { font-family: 'Playfair Display', serif; font-size: 1.6rem; color: var(--sage-dark); }
+    .nav-links { display: flex; gap: 2rem; list-style: none; }
+    .nav-links a { font-weight: 500; color: var(--sage-dark); transition: color 0.2s; }
+    .nav-links a:hover { color: var(--gold); }
+    .cta-btn {
+      background: var(--sage); color: white; padding: 0.6rem 1.4rem; border-radius: 30px;
+      font-weight: 500; transition: background 0.2s;
+    }
+    .cta-btn:hover { background: var(--sage-dark); }
+
+    /* Hero */
+    .hero {
+      height: 100vh; min-height: 600px; background: linear-gradient(rgba(0,0,0,0.35), rgba(0,0,0,0.35)),
+        url('images/ZJjcP.jpg') center/cover no-repeat;
+      display: flex; align-items: center; justify-content: center; text-align: center; color: white;
+      padding: 0 2rem;
+    }
+    .hero-content { max-width: 800px; }
+    .hero h1 { font-size: 3.5rem; margin-bottom: 1rem; line-height: 1.2; }
+    .hero p { font-size: 1.25rem; margin-bottom: 2rem; font-weight: 300; }
+    .hero-btns { display: flex; gap: 1rem; justify-content: center; flex-wrap: wrap; }
+    .btn-primary { background: var(--gold); color: #1a1a1a; padding: 0.9rem 2rem; border-radius: 30px; font-weight: 600; }
+    .btn-outline { border: 2px solid white; padding: 0.9rem 2rem; border-radius: 30px; font-weight: 500; }
+
+    /* Sections */
+    section { padding: 5rem 2rem; }
+    .container { max-width: 1100px; margin: 0 auto; }
+    .section-title { text-align: center; font-size: 2.5rem; margin-bottom: 1rem; color: var(--sage-dark); }
+    .section-sub { text-align: center; color: var(--soft); margin-bottom: 3rem; font-size: 1.1rem; }
+
+    /* Services */
+    .services { background: var(--cream); }
+    .services-grid {
+      display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 2rem;
+    }
+    .service-card {
+      background: white; border-radius: 16px; overflow: hidden; box-shadow: 0 10px 30px rgba(0,0,0,0.06);
+      transition: transform 0.3s;
+    }
+    .service-card:hover { transform: translateY(-8px); }
+    .service-card img { height: 200px; width: 100%; object-fit: cover; }
+    .service-card h3 { padding: 1.5rem 1.5rem 0.5rem; font-size: 1.4rem; }
+    .service-card p { padding: 0 1.5rem 1.5rem; color: var(--soft); }
+
+    /* About */
+    .about-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 4rem; align-items: center; }
+    .about-text h2 { font-size: 2.4rem; margin-bottom: 1.5rem; }
+    .about-text p { margin-bottom: 1rem; color: #444; }
+    .about-img { border-radius: 16px; overflow: hidden; box-shadow: 0 15px 40px rgba(0,0,0,0.1); }
+
+    /* Areas */
+    .areas { background: linear-gradient(135deg, var(--sage-dark), var(--sage)); color: white; text-align: center; }
+    .areas h2 { color: white; }
+    .areas-list { display: flex; flex-wrap: wrap; justify-content: center; gap: 1rem; margin-top: 2rem; }
+    .area-tag { background: rgba(255,255,255,0.15); padding: 0.5rem 1.2rem; border-radius: 20px; font-size: 0.95rem; }
+
+    /* Contact */
+    .contact-form { max-width: 600px; margin: 0 auto; background: white; padding: 2.5rem; border-radius: 16px; box-shadow: 0 10px 30px rgba(0,0,0,0.08); }
+    .form-group { margin-bottom: 1.2rem; }
+    label { display: block; margin-bottom: 0.4rem; font-weight: 500; }
+    input, textarea, select {
+      width: 100%; padding: 0.9rem; border: 1px solid #ddd; border-radius: 8px; font-family: inherit; font-size: 1rem;
+    }
+    input:focus, textarea:focus { outline: none; border-color: var(--sage); }
+    button[type="submit"] {
+      width: 100%; background: var(--sage); color: white; border: none; padding: 1rem; border-radius: 8px;
+      font-size: 1.1rem; font-weight: 600; cursor: pointer; transition: background 0.2s;
+    }
+    button[type="submit"]:hover { background: var(--sage-dark); }
+    .note { text-align: center; margin-top: 1.5rem; color: var(--soft); font-size: 0.9rem; }
+
+    /* Footer */
+    footer { background: #1a1a1a; color: #ccc; text-align: center; padding: 2.5rem; font-size: 0.9rem; }
+    footer .disclaimer { margin-top: 1rem; font-size: 0.8rem; color: #888; max-width: 700px; margin-left: auto; margin-right: auto; }
+
+    /* Responsive */
+    @media (max-width: 768px) {
+      .hero h1 { font-size: 2.4rem; }
+      .about-grid { grid-template-columns: 1fr; gap: 2rem; }
+      .nav-links { display: none; }
+      .logo-text { font-size: 1.3rem; }
+    }
+  </style>
+</head>
+<body>
+  <nav>
+    <div class="nav-inner">
+      <div class="logo">
+        <img src="images/9REOB.jpg" alt="Mr Massage Logo">
+        <span class="logo-text">Mr Massage</span>
+      </div>
+      <ul class="nav-links">
+        <li><a href="#services">Services</a></li>
+        <li><a href="#about">About</a></li>
+        <li><a href="#areas">Areas</a></li>
+        <li><a href="#book">Book</a></li>
+      </ul>
+      <a href="#book" class="cta-btn">Book Now</a>
+    </div>
+  </nav>
+
+  <header class="hero">
+    <div class="hero-content">
+      <h1>Been Working Out Hard?<br>Need a Real Relaxing Massage?</h1>
+      <p>After a tough week or intense training, look no further than Mr Massage. Professional mobile oil massages that melt away tension — I come to you across the Fylde.</p>
+      <div class="hero-btns">
+        <a href="#book" class="btn-primary">Book Your Session</a>
+        <a href="#services" class="btn-outline">View Services</a>
+      </div>
+    </div>
+  </header>
+
+  <section id="services" class="services">
+    <div class="container">
+      <h2 class="section-title">Relaxing Body Massages</h2>
+      <p class="section-sub">Designed purely for deep relaxation and muscle ease. No clinical claims — just genuine, soothing oil massage.</p>
+      <div class="services-grid">
+        <div class="service-card">
+          <img src="images/WCeuM.jpg" alt="Relaxing oil massage">
+          <h3>Full Body Oil Massage</h3>
+          <p>A flowing, full-body session with warm oils to ease overall tension, soothe tired muscles and help you completely unwind after a demanding week.</p>
+        </div>
+        <div class="service-card">
+          <img src="images/ZJjcP.jpg" alt="Massage setup">
+          <h3>Post-Workout Recovery</h3>
+          <p>Ideal after hard training. Focused work on tight areas to help muscles relax and recover, leaving you feeling looser and more refreshed.</p>
+        </div>
+        <div class="service-card">
+          <img src="images/DvSkC.jpg" alt="Coastal Fylde relaxation">
+          <h3>De-Stress & Restore</h3>
+          <p>The perfect reset after a long, stressful week. Slow, rhythmic strokes that promote deep relaxation and a sense of calm.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section id="about">
+    <div class="container">
+      <div class="about-grid">
+        <div class="about-text">
+          <h2>Mobile Massage, Done Properly</h2>
+          <p>I’m Mr Massage, bringing professional, relaxing oil massage directly to your home or accommodation across the Fylde area.</p>
+          <p>Whether you’ve been hitting the gym hard and need your body to properly relax, or you’ve had a demanding week and simply want to switch off, I focus on what matters: genuine, skilled hands-on work that helps you feel better.</p>
+          <p>All sessions use quality oils, a proper portable table, and a calm, professional approach. I travel to you — no need to leave home.</p>
+          <p><strong>Sessions available:</strong> 60 or 90 minutes. Contact me for current availability and rates.</p>
+        </div>
+        <div class="about-img">
+          <img src="images/ZJjcP.jpg" alt="Professional mobile massage setup">
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section id="areas" class="areas">
+    <div class="container">
+      <h2 class="section-title">Serving the Fylde Area</h2>
+      <p>Mobile service covering the Fylde coast and surrounding towns & villages.</p>
+      <div class="areas-list">
+        <span class="area-tag">Lytham St Annes</span>
+        <span class="area-tag">Blackpool</span>
+        <span class="area-tag">Cleveleys</span>
+        <span class="area-tag">Fleetwood</span>
+        <span class="area-tag">Poulton-le-Fylde</span>
+        <span class="area-tag">Kirkham</span>
+        <span class="area-tag">Wesham</span>
+        <span class="area-tag">And surrounding areas</span>
+      </div>
+    </div>
+  </section>
+
+  <section id="book">
+    <div class="container">
+      <h2 class="section-title">Book Your Relaxing Massage</h2>
+      <p class="section-sub">Ready to unwind? Get in touch to check availability.</p>
+      <form class="contact-form" onsubmit="handleSubmit(event)">
+        <div class="form-group">
+          <label for="name">Your Name</label>
+          <input type="text" id="name" name="name" required placeholder="Full name">
+        </div>
+        <div class="form-group">
+          <label for="phone">Phone Number</label>
+          <input type="tel" id="phone" name="phone" required placeholder="07xxx xxx xxx">
+        </div>
+        <div class="form-group">
+          <label for="location">Your Location (town/area)</label>
+          <input type="text" id="location" name="location" required placeholder="e.g. Lytham, Blackpool, Kirkham">
+        </div>
+        <div class="form-group">
+          <label for="service">Preferred Session</label>
+          <select id="service" name="service">
+            <option>Full Body Oil Massage (60 min)</option>
+            <option>Full Body Oil Massage (90 min)</option>
+            <option>Post-Workout Focus</option>
+            <option>Not sure — advise me</option>
+          </select>
+        </div>
+        <div class="form-group">
+          <label for="message">Message / Preferred Times</label>
+          <textarea id="message" name="message" rows="4" placeholder="Any specific areas of tension, preferred day/time, etc."></textarea>
+        </div>
+        <button type="submit">Send Enquiry</button>
+        <p class="note">This form is a demo. Update the contact details below with your real phone number and email before going live.</p>
+      </form>
+      <div style="text-align:center; margin-top:2rem;">
+        <p><strong>Or contact directly:</strong></p>
+        <p>Phone: <strong>07XXX XXX XXX</strong> (replace with your number)</p>
+        <p>Email: <strong>bookings@mrmassage-fylde.co.uk</strong> (replace with your email)</p>
+      </div>
+    </div>
+  </section>
+
+  <footer>
+    <p>&copy; 2026 Mr Massage. Mobile Relaxing Massage in the Fylde.</p>
+    <p class="disclaimer">
+      All massage services are provided for the purpose of relaxation and general muscle ease only. This is not a medical, clinical or therapeutic treatment and is not a substitute for professional medical advice or treatment. Please consult a doctor if you have any health concerns before booking.
+    </p>
+  </footer>
+
+  <script>
+    function handleSubmit(e) {
+      e.preventDefault();
+      alert('Thank you! This is a demonstration form. Please replace the contact details with your real phone and email, and connect the form to your preferred booking method (e.g. email, WhatsApp or a form service).');
+    }
+    // Smooth scroll
+    document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+      anchor.addEventListener('click', function (e) {
+        e.preventDefault();
+        const target = document.querySelector(this.getAttribute('href'));
+        if (target) target.scrollIntoView({ behavior: 'smooth', block: 'start' });
+      });
+    });
+  </script>
+</body>
+</html>
